@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-	compile'jmlab:jmlab-utils:0.2.6'
+	compile'jmlab:jmlab-utils:0.3.0'
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }

@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import kr.jm.springboot.timerjob.Every1MinuteJobInterface;
-import kr.jm.utils.LogHelper;
+import kr.jm.utils.helper.JMLog;
 import kr.jm.utils.spring.DestroyInterface;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,7 +23,7 @@ public class JMSpringBootTimerJob implements DestroyInterface {
 
 	@Scheduled(initialDelay = 0, fixedRate = 60000)
 	public void workEvery1Minute() {
-		LogHelper.logMethodStartInfo(log, "workEvery1Minute",
+		JMLog.logMethodStartInfo(log, "workEvery1Minute",
 				every1MinuteJobList.size(), every1MinuteJobList);
 		for (Every1MinuteJobInterface timerJob : every1MinuteJobList)
 			timerThreadPool.execute(timerJob);

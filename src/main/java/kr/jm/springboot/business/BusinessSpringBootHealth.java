@@ -1,19 +1,17 @@
 package kr.jm.springboot.business;
 
-import kr.jm.business.Bussiness;
+import kr.jm.springboot.business.status.BusinessStatus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health.Builder;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 @Component
-@DependsOn("business")
 public class BusinessSpringBootHealth extends AbstractHealthIndicator {
 
 	@Autowired
-	private Bussiness business;
+	private BusinessStatus businessStatus;
 
 	@Override
 	protected void doHealthCheck(Builder builder) throws Exception {

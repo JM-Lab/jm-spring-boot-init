@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Hostname Status View</title>
+<title>Error Message History View</title>
 <meta name="description"
 	content="Dynatable is a funner, semantic, interactive table plugin using jQuery, HTML5, and JSON. And it's not just for tables.">
 <meta name="viewport" content="width=device-width">
@@ -17,28 +17,25 @@
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8"
 	src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.js"></script>
-<script type="text/javascript">
-	var locationUrl = "https://url.....";
-</script>
-<script type="text/javascript" src="/js/statusView.js"></script>
+
+<script type="text/javascript" src="/js/errorMessageView.js"></script>
 </head>
 <body>
-	<div id="idps"></div>
-	<div id="odps"></div>
-	<table id="hostnameTable" class="display">
+	<h1>Error Message History View</h1>
+	<table id="errorMessageTable" class="display">
 		<thead>
 			<tr>
-				<th>Status</th>
-				<th>Hostname</th>
-				<th>Size</th>
+				<th>No.</th>
+				<th>Timestamp</th>
+				<th>Error Message</th>
 			</tr>
 		</thead>
 
 		<tfoot>
 			<tr>
-				<th>Status</th>
-				<th>Hostname</th>
-				<th>Size</th>
+				<th>No.</th>
+				<th>Timestamp</th>
+				<th>Error Message</th>
 			</tr>
 		</tfoot>
 	</table>

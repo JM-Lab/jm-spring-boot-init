@@ -1,6 +1,10 @@
 package kr.jm.springboot;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.util.List;
+
+import kr.jm.utils.exception.ErrorMessageHistory;
+import kr.jm.utils.exception.JMExceptionManager;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,9 +15,8 @@ import org.springframework.web.servlet.view.RedirectView;
 public class JMSpringBootController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public @ResponseBody
-	String getDefault(@Value("${info.app.name}") String appName) {
-		return "Hello " + appName;
+	public RedirectView mainRedirect() {
+		return new RedirectView("/info");
 	}
 
 	@RequestMapping(value = "/monitoring/jvm", method = RequestMethod.GET)
@@ -21,9 +24,15 @@ public class JMSpringBootController {
 		return new RedirectView("/monitoring/JVM.html");
 	}
 
-	@RequestMapping(value = "/monitoring", method = RequestMethod.GET)
-	public RedirectView monitoringSystemProcStatusViewRedirect() {
-		return new RedirectView("/monitoring/StatusView.html");
+	@RequestMapping(value = "/monitoring/error/list", method = RequestMethod.GET)
+	public @ResponseBody
+	List<ErrorMessageHistory> monitoringErrorList() {
+		return JMExceptionManager.getErrorMessageHistoryList();
+	}
+
+	@RequestMapping(value = "/monitoring/error/view", method = RequestMethod.GET)
+	public RedirectView monitoringErrorView() {
+		return new RedirectView("/monitoring/ErrorMessageView.html");
 	}
 
 }

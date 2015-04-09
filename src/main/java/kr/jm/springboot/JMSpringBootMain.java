@@ -9,7 +9,7 @@ public class JMSpringBootMain {
 
 	private static final String LOGGING_PATH = "logging.path";
 	private static final String LOGGING_LEVEL = "logging.level";
-	
+
 	static {
 		if (!System.getProperties().containsKey(LOGGING_PATH))
 			System.setProperty(LOGGING_PATH, "log");

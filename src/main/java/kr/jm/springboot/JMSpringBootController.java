@@ -5,13 +5,13 @@ import java.util.List;
 import kr.jm.utils.exception.ErrorMessageHistory;
 import kr.jm.utils.exception.JMExceptionManager;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
+@RestController
 public class JMSpringBootController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)

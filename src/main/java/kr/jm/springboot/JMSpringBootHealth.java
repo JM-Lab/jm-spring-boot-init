@@ -1,15 +1,24 @@
 package kr.jm.springboot;
 
-import org.springframework.boot.actuate.health.AbstractHealthIndicator;
-import org.springframework.boot.actuate.health.Health.Builder;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JMSpringBootHealth extends AbstractHealthIndicator {
+public class JMSpringBootHealth implements HealthIndicator {
 
 	@Override
-	protected void doHealthCheck(Builder builder) throws Exception {
-		// TODO
+	public Health health() {
+		int errorCode = check();
+		if (errorCode != 0) {
+			return Health.down().withDetail("Error Code", errorCode).build();
+		}
+		return Health.up().build();
+	}
+
+	private int check() {
+		// TODO // perform some specific health check
+		return 0;
 	}
 
 }

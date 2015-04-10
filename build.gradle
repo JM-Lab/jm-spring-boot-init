@@ -1,10 +1,12 @@
 buildscript {
-    repositories {
+    repositories {   
     	mavenLocal()
-        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
     }
 }
 
@@ -13,36 +15,36 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-allprojects {
-	version =  '0.1.0'
-	tasks.withType(JavaCompile) {
-		options.encoding = "UTF-8"
-    	sourceCompatibility = "1.7"
-    	targetCompatibility = "1.7"
-	}
+jar {
+    baseName = 'jm-spring-boot-init'
+    version =  '0.0.1-SNAPSHOT'
 }
 
 repositories {
 	mavenLocal()
-    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
 }
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 dependencies {
 	compile'jmlab:jmlab-utils:0.3.0'
+    compile 'org.projectlombok:lombok:1.14.4'
+    compile 'org.slf4j:slf4j-api:1.7.7'
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-jetty")
-    compile 'org.projectlombok:lombok:1.14.4'
-    compile 'org.slf4j:slf4j-api:1.7.7'
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.jolokia:jolokia-core")
-    
-    testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.3'
 }
 
 uploadArchives {

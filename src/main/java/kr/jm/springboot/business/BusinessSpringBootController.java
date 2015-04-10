@@ -3,9 +3,9 @@ package kr.jm.springboot.business;
 import kr.jm.business.Bussiness;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class BusinessSpringBootController {
 
 	@Autowired

@@ -17,10 +17,10 @@ public class Bussiness implements JMServiceSpringBootInterface {
 	@Override
 	public void start() {
 		try {
-			System.out.println("Bussiness Start !!!");
+			System.out.println("JM Service Spring Boot Start !!!");
 			throw new RuntimeException("Sample Error!!!");
 		} catch (Exception e) {
-			JMExceptionManager.logExption(log, e, "start");
+			JMExceptionManager.logException(log, e, "start");
 		}
 
 	}

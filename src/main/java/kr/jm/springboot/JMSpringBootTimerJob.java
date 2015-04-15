@@ -29,6 +29,11 @@ public class JMSpringBootTimerJob implements DestroyInterface {
 			timerThreadPool.execute(timerJob);
 	}
 
+	@Scheduled(cron = "0 0 */1 * * *")
+	public void workEvery1Hour() {
+
+	}
+
 	@Override
 	public void cleanUp() throws RuntimeException {
 		timerThreadPool.shutdown();

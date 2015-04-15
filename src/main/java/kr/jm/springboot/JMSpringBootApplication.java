@@ -11,10 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 // same as @Configuration @EnableAutoConfiguration @ComponentScan
-// @PropertySources({
-// @PropertySource("classpath:default-application.properties") })
-// @PropertySource(name = "idcInfo", value ="classpath:idc-info.properties")})
-// @PropertySource("classpath:services.properties")
 @EnableScheduling
 public class JMSpringBootApplication {
 
@@ -46,7 +42,7 @@ public class JMSpringBootApplication {
 		jmServiceSpringBoot.start();
 	}
 
-	@Bean
+	@Bean(destroyMethod = "stop")
 	@Autowired
 	public JMServiceSpringBootInterface jmService(
 			JMServiceSpringBootInterface jmService) {

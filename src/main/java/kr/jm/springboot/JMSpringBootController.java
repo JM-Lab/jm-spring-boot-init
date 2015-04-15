@@ -25,8 +25,7 @@ public class JMSpringBootController {
 	}
 
 	@RequestMapping(value = "/monitoring/error/list", method = RequestMethod.GET)
-	public @ResponseBody
-	List<ErrorMessageHistory> monitoringErrorList() {
+	public @ResponseBody List<ErrorMessageHistory> monitoringErrorList() {
 		return JMExceptionManager.getErrorMessageHistoryList();
 	}
 

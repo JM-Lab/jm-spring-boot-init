@@ -2,6 +2,8 @@ package kr.jm.springboot;
 
 import java.util.Arrays;
 
+import kr.jm.utils.helper.JMResources;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,14 +16,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class JMSpringBootApplication {
 
-	private static final String LOGGING_PATH = "logging.path";
-	private static final String LOGGING_LEVEL = "logging.level";
-
 	static {
-		if (!System.getProperties().containsKey(LOGGING_PATH))
-			System.setProperty(LOGGING_PATH, "log");
-		if (!System.getProperties().containsKey(LOGGING_LEVEL))
-			System.setProperty(LOGGING_LEVEL, "INFO");
+		JMResources.setSystemPropertyIfIsNull("logging.path", "log");
+		JMResources.setSystemPropertyIfIsNull("logging.level", "INFO");
 	}
 
 	public static void main(String[] args) {

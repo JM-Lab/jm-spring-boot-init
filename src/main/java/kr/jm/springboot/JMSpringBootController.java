@@ -19,19 +19,19 @@ public class JMSpringBootController {
 		return new RedirectView("/info");
 	}
 
-	@RequestMapping(value = "/monitoring/jvm", method = RequestMethod.GET)
+	@RequestMapping(value = "/ops/jvm", method = RequestMethod.GET)
 	public RedirectView monitoringJvmRedirect() {
-		return new RedirectView("/monitoring/JVM.html");
+		return new RedirectView("/ops/JVM.html");
 	}
 
-	@RequestMapping(value = "/monitoring/error/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/ops/error/list", method = RequestMethod.GET)
 	public @ResponseBody List<ErrorMessageHistory> monitoringErrorList() {
 		return JMExceptionManager.getErrorMessageHistoryList();
 	}
 
-	@RequestMapping(value = "/monitoring/error/view", method = RequestMethod.GET)
+	@RequestMapping(value = "/ops/error", method = RequestMethod.GET)
 	public RedirectView monitoringErrorView() {
-		return new RedirectView("/monitoring/ErrorMessageView.html");
+		return new RedirectView("/ops/ErrorMessageView.html");
 	}
 
 }

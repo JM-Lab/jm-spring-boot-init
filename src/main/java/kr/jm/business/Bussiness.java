@@ -20,7 +20,7 @@ public class Bussiness implements JMServiceSpringBootInterface {
 		JMLog.logMethodStartInfo(log, "start");
 		try {
 			System.out.println("JM Service Spring Boot Start !!!");
-			throw new RuntimeException("Sample Error!!!");
+			throw new RuntimeException("[Sample Error] Hello World !!!");
 		} catch (Exception e) {
 			JMExceptionManager.logException(log, e, "start");
 		}

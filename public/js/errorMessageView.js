@@ -12,7 +12,7 @@ $(document).ready(function() {
 		},
 		"iDisplayLength" : 100,
 		"ajax" : {
-			"url" : "/monitoring/error/list",
+			"url" : "/ops/error/list",
 			"dataSrc" : ""
 		},
 		"columns" : [ {

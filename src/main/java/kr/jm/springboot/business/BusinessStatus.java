@@ -1,4 +1,4 @@
-package kr.jm.springboot.business.status;
+package kr.jm.springboot.business;
 
 import org.springframework.boot.actuate.health.Health.Builder;
 import org.springframework.stereotype.Service;

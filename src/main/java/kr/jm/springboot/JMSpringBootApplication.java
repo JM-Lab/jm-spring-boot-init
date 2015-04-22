@@ -16,8 +16,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class JMSpringBootApplication {
 
+	private static final String LOGGING_PATH = "logging.path";
+
 	static {
-		JMResources.setSystemPropertyIfIsNull("logging.path", "log");
+		if (!System.getProperties().containsKey(LOGGING_PATH))
+			System.setProperty(LOGGING_PATH, "log");
 		JMResources.setSystemPropertyIfIsNull("logging.level", "INFO");
 	}
 
@@ -34,9 +37,10 @@ public class JMSpringBootApplication {
 			System.out.println(beanName);
 
 		// service start
-		JMServiceSpringBootInterface jmServiceSpringBoot = ctx.getBean(
-				"jmService", JMServiceSpringBootInterface.class);
-		jmServiceSpringBoot.start();
+		JMServiceSpringBootInterface jmService = ctx.getBean("jmService",
+				JMServiceSpringBootInterface.class);
+		jmService.start();
+
 	}
 
 	@Bean(destroyMethod = "stop")

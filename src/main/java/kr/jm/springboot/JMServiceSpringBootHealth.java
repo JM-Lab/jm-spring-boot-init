@@ -1,6 +1,6 @@
 package kr.jm.springboot;
 
-import kr.jm.springboot.business.status.BusinessStatus;
+import kr.jm.springboot.business.BusinessStatus;
 import kr.jm.utils.exception.JMExceptionManager;
 import kr.jm.utils.time.JMTimeUtil;
 

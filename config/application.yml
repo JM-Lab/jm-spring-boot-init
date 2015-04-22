@@ -1,10 +1,8 @@
 #external config
 #default
 --- #profile option1
-spring:
-  profiles: option1
+spring.profiles: option1
 ...
 ---  #profile option2
-spring:
-  profiles: option2
+spring.profiles: option2
 ...

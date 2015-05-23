@@ -31,8 +31,8 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-	compile'jmlab:jmlab-utils:0.3.0'
-    compile 'org.projectlombok:lombok:1.14.4'
+	compile 'jmlab:jmlab-utils:0.3.0'
+    compile 'org.projectlombok:lombok:1.16.4'
     compile 'org.slf4j:slf4j-api:1.7.7'
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"

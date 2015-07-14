@@ -1,3 +1,9 @@
+def props = new Properties()
+file("src/main/resources/application.properties").withInputStream { 
+    stream -> props.load(stream) 
+}
+project.version =  props['info.app.version']
+
 buildscript {
     repositories {   
     	mavenLocal()
@@ -6,7 +12,7 @@ buildscript {
         maven { url "http://repo.spring.io/milestone" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
     }
 }
 
@@ -16,8 +22,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'jm-spring-boot-init'
-    version =  '0.0.1-SNAPSHOT'
+	baseName = props['info.app.name']
 }
 
 repositories {

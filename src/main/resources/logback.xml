@@ -4,8 +4,8 @@
 	<property resource="application.properties" />
 	<property name="PROJECT" value="${info.app.name}" />	
 	<property name="LOG_FILE" value="%d{yyyyMMdd}-${PROJECT}" />
-	<property name="LOG_PATH" value="${logging.path}" />
-	<property name="LOG_LEVEL" value="${logging.level}" />
+	<property name="LOG_PATH" value="${logging.path:-log}" />
+	<property name="LOG_LEVEL" value="${logging.level:-INFO}" />
 	<property name="FILE_LOG_PATTERN"
 		value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } - [%t] %-40.40logger{39} : %m%n%wex" />
 	<property name="MAX_HISTORY" value="3" />

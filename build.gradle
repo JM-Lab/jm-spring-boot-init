@@ -32,8 +32,20 @@ repositories {
     maven { url "http://repo.spring.io/milestone" }
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'deploy'
+       }
+    }
+}
 
 dependencies {
 	compile 'jmlab:jmlab-utils:0.3.0'
@@ -46,16 +58,4 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.jolokia:jolokia-core")
     testCompile("org.springframework.boot:spring-boot-starter-test")
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'deploy'
-       }
-    }
 }

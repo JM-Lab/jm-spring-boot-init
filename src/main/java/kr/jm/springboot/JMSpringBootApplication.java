@@ -2,7 +2,7 @@ package kr.jm.springboot;
 
 import java.util.Arrays;
 
-import kr.jm.utils.helper.JMResources;
+import kr.jm.utils.io.JMResources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

@@ -5,8 +5,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import kr.jm.springboot.timerjob.Every1MinuteJobInterface;
+import kr.jm.utils.destory.DestroyInterface;
 import kr.jm.utils.helper.JMLog;
-import kr.jm.utils.spring.DestroyInterface;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,12 @@
 package kr.jm.springboot.business;
 
-import org.springframework.boot.actuate.health.Health.Builder;
-import org.springframework.stereotype.Service;
+import kr.jm.springboot.JMServiceSpringBootStatus;
 
-@Service
-public class BusinessStatus {
+import org.springframework.boot.actuate.health.Health.Builder;
+import org.springframework.stereotype.Component;
+
+@Component
+public class BusinessStatus extends JMServiceSpringBootStatus{
 
 	public void checkStatus(Builder builder) {
 		// TODO Auto-generated method stub

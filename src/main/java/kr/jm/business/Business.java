@@ -1,23 +1,30 @@
 package kr.jm.business;
 
+import java.util.List;
+
 import kr.jm.springboot.JMServiceSpringBootInterface;
 import kr.jm.springboot.business.BusinessStatus;
+import kr.jm.utils.destory.DestroyInterface;
+import kr.jm.utils.destory.Destroyer;
 import kr.jm.utils.exception.JMExceptionManager;
 import kr.jm.utils.helper.JMLog;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Bussiness implements JMServiceSpringBootInterface {
+public class Business implements JMServiceSpringBootInterface {
 
 	private BusinessStatus businessStatus;
+	private List<DestroyInterface> destroyList;
 
-	public Bussiness(BusinessStatus businessStatus) {
+	public Business(BusinessStatus businessStatus,
+			List<DestroyInterface> destroyList) {
 		this.businessStatus = businessStatus;
+		this.destroyList = destroyList;
 	}
 
 	@Override
 	public void start() {
-		JMLog.logMethodStartInfo(log, "start");
+		JMLog.logMethodStartInfo(log, "Start");
 		try {
 			System.out.println("JM Service Spring Boot Start !!!");
 			throw new RuntimeException("[Sample Error] Hello World !!!");
@@ -29,9 +36,9 @@ public class Bussiness implements JMServiceSpringBootInterface {
 
 	@Override
 	public void stop() {
-		JMLog.logMethodStartInfo(log, "stop");
-		// TODO Auto-generated method stub
-
+		JMLog.logMethodStartInfo(log, "Start Graceful Shutdown");
+		Destroyer.cleanUp(destroyList);
+		JMLog.logMethodStartInfo(log, "Shutdown Completely");
 	}
 
 }

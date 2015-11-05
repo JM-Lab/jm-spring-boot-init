@@ -48,7 +48,7 @@ uploadArchives {
 }
 
 dependencies {
-	compile'jmlab:jmlab-utils-java8:0.1.5'
+	compile'jmlab:jmlab-utils-java8:0.1.6'
     compile 'org.projectlombok:lombok:1.16.4'
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"

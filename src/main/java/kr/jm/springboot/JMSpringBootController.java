@@ -3,6 +3,7 @@ package kr.jm.springboot;
 import java.util.List;
 import java.util.Map;
 
+import kr.jm.utils.datastructure.JMCollections;
 import kr.jm.utils.exception.ErrorMessageHistory;
 import kr.jm.utils.exception.JMExceptionManager;
 
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 public class JMSpringBootController {
-	
+
 	@Autowired
 	private JMServiceSpringBootStatus jmServiceSpringBootStatus;
 
@@ -23,7 +24,7 @@ public class JMSpringBootController {
 	public RedirectView mainRedirect() {
 		return new RedirectView("/Dashboard.html");
 	}
-	
+
 	@RequestMapping(value = "/ops/serviceInfo", method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> systemInfo() {
 		return jmServiceSpringBootStatus.getJMServiceInfo();
@@ -36,7 +37,8 @@ public class JMSpringBootController {
 
 	@RequestMapping(value = "/ops/error/list", method = RequestMethod.GET)
 	public @ResponseBody List<ErrorMessageHistory> getErrorList() {
-		return JMExceptionManager.getErrorMessageHistoryList();
+		return JMCollections.getReversed(JMExceptionManager
+				.getErrorMessageHistoryList());
 	}
 
 	@RequestMapping(value = "/ops/error/list", method = RequestMethod.DELETE)

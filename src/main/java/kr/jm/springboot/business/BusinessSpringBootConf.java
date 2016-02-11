@@ -2,12 +2,12 @@ package kr.jm.springboot.business;
 
 import java.util.List;
 
-import kr.jm.business.Business;
-import kr.jm.utils.destory.DestroyInterface;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import kr.jm.business.Business;
+import kr.jm.utils.destory.DestroyInterface;
 
 @Configuration
 public class BusinessSpringBootConf {

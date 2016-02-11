@@ -3,16 +3,16 @@ package kr.jm.springboot;
 import java.util.List;
 import java.util.Map;
 
-import kr.jm.utils.datastructure.JMCollections;
-import kr.jm.utils.exception.ErrorMessageHistory;
-import kr.jm.utils.exception.JMExceptionManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
+
+import kr.jm.utils.datastructure.JMCollections;
+import kr.jm.utils.exception.ErrorMessageHistory;
+import kr.jm.utils.exception.JMExceptionManager;
 
 @RestController
 public class JMSpringBootController {
@@ -37,8 +37,8 @@ public class JMSpringBootController {
 
 	@RequestMapping(value = "/ops/error/list", method = RequestMethod.GET)
 	public @ResponseBody List<ErrorMessageHistory> getErrorList() {
-		return JMCollections.getReversed(JMExceptionManager
-				.getErrorMessageHistoryList());
+		return JMCollections
+				.getReversed(JMExceptionManager.getErrorMessageHistoryList());
 	}
 
 	@RequestMapping(value = "/ops/error/list", method = RequestMethod.DELETE)

@@ -24,7 +24,7 @@ public class Business implements JMServiceSpringBootInterface {
 
 	@Override
 	public void start() {
-		JMLog.logMethodStartInfo(log, "Start");
+		JMLog.infoBeforeStart(log, "Start");
 		try {
 			System.out.println("JM Service Spring Boot Start !!!");
 			throw new RuntimeException("[Sample Error] Hello World !!!");
@@ -36,9 +36,9 @@ public class Business implements JMServiceSpringBootInterface {
 
 	@Override
 	public void stop() {
-		JMLog.logMethodStartInfo(log, "Start Graceful Shutdown");
+		JMLog.infoBeforeStart(log, "Start Graceful Shutdown");
 		Destroyer.cleanUp(destroyList);
-		JMLog.logMethodStartInfo(log, "Shutdown Completely");
+		JMLog.infoBeforeStart(log, "Shutdown Completely");
 	}
 
 }

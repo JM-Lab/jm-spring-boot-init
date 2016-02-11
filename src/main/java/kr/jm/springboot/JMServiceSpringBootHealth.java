@@ -1,11 +1,11 @@
 package kr.jm.springboot;
 
-import kr.jm.utils.exception.JMExceptionManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health.Builder;
 import org.springframework.stereotype.Component;
+
+import kr.jm.utils.exception.JMExceptionManager;
 
 @Component
 public class JMServiceSpringBootHealth extends AbstractHealthIndicator {

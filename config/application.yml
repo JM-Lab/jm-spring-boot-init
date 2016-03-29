@@ -1,5 +1,6 @@
 #external config
 #default
+
 --- #profile option1
 spring:
   profiles: option1

@@ -5,7 +5,6 @@ eclipse spring boot template for me
 
 ## Prerequisites:
 * Java 8 or later
-* [JMLab Java 8 Utility Libraries](https://github.com/JM-Lab/utils-java8)
 * [install Project Lombok for IDE](https://projectlombok.org/download.html)
 
 ## Installation

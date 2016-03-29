@@ -26,7 +26,7 @@ public class Business implements JMServiceSpringBootInterface {
 	public void start() {
 		JMLog.infoBeforeStart(log, "start");
 		try {
-			System.out.println("JM Service Spring Boot Start !!!");
+			System.out.println("JM Spring Boot Service Start !!!");
 			throw new RuntimeException("[Sample Error] Hello World !!!");
 		} catch (Exception e) {
 			JMExceptionManager.logException(log, e, "start");

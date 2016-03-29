@@ -24,7 +24,7 @@ public class Business implements JMServiceSpringBootInterface {
 
 	@Override
 	public void start() {
-		JMLog.infoBeforeStart(log, "Start");
+		JMLog.infoBeforeStart(log, "start");
 		try {
 			System.out.println("JM Service Spring Boot Start !!!");
 			throw new RuntimeException("[Sample Error] Hello World !!!");

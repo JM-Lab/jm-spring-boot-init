@@ -1,7 +1,6 @@
 package kr.jm.springboot;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,7 @@ import kr.jm.utils.exception.JMExceptionManager;
 public class JMSpringBootController {
 
 	@Autowired
-	private JMServiceSpringBootStatus jmServiceSpringBootStatus;
+	private AbstractJMSpringBootStatus jmServiceSpringBootStatus;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public RedirectView mainRedirect() {
@@ -26,8 +25,8 @@ public class JMSpringBootController {
 	}
 
 	@RequestMapping(value = "/ops/serviceInfo", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> systemInfo() {
-		return jmServiceSpringBootStatus.getJMServiceInfo();
+	public @ResponseBody AbstractJMSpringBootStatus serviceInfo() {
+		return jmServiceSpringBootStatus;
 	}
 
 	@RequestMapping(value = "/ops/jvm", method = RequestMethod.GET)

@@ -2,7 +2,7 @@ package kr.jm.business;
 
 import java.util.List;
 
-import kr.jm.springboot.JMServiceSpringBootInterface;
+import kr.jm.springboot.JMSpringBootInterface;
 import kr.jm.springboot.business.BusinessStatus;
 import kr.jm.utils.destory.DestroyInterface;
 import kr.jm.utils.destory.Destroyer;
@@ -11,7 +11,7 @@ import kr.jm.utils.helper.JMLog;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Business implements JMServiceSpringBootInterface {
+public class Business implements JMSpringBootInterface {
 
 	private BusinessStatus businessStatus;
 	private List<DestroyInterface> destroyList;

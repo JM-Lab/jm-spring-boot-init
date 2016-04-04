@@ -37,16 +37,16 @@ public class JMSpringBootApplication {
 			System.out.println(beanName);
 
 		// service start
-		JMServiceSpringBootInterface jmService =
-				ctx.getBean("jmService", JMServiceSpringBootInterface.class);
+		JMSpringBootInterface jmService =
+				ctx.getBean("jmService", JMSpringBootInterface.class);
 		jmService.start();
 
 	}
 
 	@Bean(destroyMethod = "stop")
 	@Autowired
-	public JMServiceSpringBootInterface
-			jmService(JMServiceSpringBootInterface jmService) {
+	public JMSpringBootInterface
+			jmService(JMSpringBootInterface jmService) {
 		return jmService;
 	}
 

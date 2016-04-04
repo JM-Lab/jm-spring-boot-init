@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 import kr.jm.utils.exception.JMExceptionManager;
 
 @Component
-public class JMServiceSpringBootHealth extends AbstractHealthIndicator {
+public class JMSpringBootHealth extends AbstractHealthIndicator {
 
 	@Autowired
-	private JMServiceSpringBootStatus jmServiceSpringBootStatus;
+	private AbstractJMSpringBootStatus jmServiceSpringBootStatus;
 
 	@Override
 	protected void doHealthCheck(Builder builder) throws Exception {

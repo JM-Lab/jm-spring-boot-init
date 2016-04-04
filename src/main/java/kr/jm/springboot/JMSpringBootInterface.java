@@ -1,6 +1,6 @@
 package kr.jm.springboot;
 
-public interface JMServiceSpringBootInterface {
+public interface JMSpringBootInterface {
 	public void start();
 
 	public void stop();

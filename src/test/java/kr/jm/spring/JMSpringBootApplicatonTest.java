@@ -17,8 +17,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import kr.jm.springboot.JMServiceSpringBootInterface;
 import kr.jm.springboot.JMSpringBootApplication;
+import kr.jm.springboot.JMSpringBootInterface;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = JMSpringBootApplication.class)
@@ -29,7 +29,7 @@ public class JMSpringBootApplicatonTest {
 	private WebApplicationContext webApplicationContext;
 
 	@Autowired
-	private JMServiceSpringBootInterface jmService;
+	private JMSpringBootInterface jmService;
 
 	private MockMvc mockMvc;
 

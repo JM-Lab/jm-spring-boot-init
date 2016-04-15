@@ -45,8 +45,7 @@ public class JMSpringBootApplication {
 
 	@Bean(destroyMethod = "stop")
 	@Autowired
-	public JMSpringBootInterface
-			jmService(JMSpringBootInterface jmService) {
+	public JMSpringBootInterface jmService(JMSpringBootInterface jmService) {
 		return jmService;
 	}
 

@@ -26,8 +26,7 @@ public class JMSpringBootTimerJob {
 	}
 
 	private void runEvery1Minute(List<Every1MinuteJobInterface> list) {
-		list.parallelStream()
-				.forEach(Every1MinuteJobInterface::runEvery1Minute);
+		list.forEach(Every1MinuteJobInterface::runEvery1Minute);
 	}
 
 	@Scheduled(cron = "0 0 */1 * * *")

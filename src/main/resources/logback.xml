@@ -5,38 +5,31 @@
 	<property name="PROJECT" value="${info.app.name}" />
 	<property name="LOG_PATH" value="${logging.path:-log}" />
 	<property name="LOG_FILE" value="${LOG_PATH}/${PROJECT}" />
-	<property name="LOG_FILE_ARCHIVE" value="${LOG_FILE}-%d{yyyyMMdd}-%i" />
+	<property name="LOG_FILE_ARCHIVE" value="${LOG_FILE}-%d{yyyyMMdd-HH}-%i" />
 	<property name="LOG_LEVEL" value="${logging.level:-INFO}" />
-	<property name="FILE_LOG_PATTERN"
-		value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } - [%t] %-40.40logger{39} : %m%n%wex" />
 	<property name="MAX_HISTORY" value="3" />
 	<property name="MAX_SIZE" value="1GB" />
+	<property name="TOTAL_SIZE_CAP" value="5GB" />
 
 	<logger name="org.springframework.web" level="${logging.level}" />
 
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
+		 <!-- from org/springframework/boot/logging/logback/defaults.xml  -->
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
-		<!-- <encoder> <pattern>%d %-5level [%thread] - [%logger] %msg%n</pattern> 
-			</encoder> -->
 	</appender>
 
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_FILE}.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${LOG_FILE_ARCHIVE}.log</fileNamePattern>
-			<minIndex>1</minIndex>
-			<maxIndex>3</maxIndex>
-		</rollingPolicy>
-		<triggeringPolicy
 			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<fileNamePattern>${LOG_FILE_ARCHIVE}.log</fileNamePattern>
 			<maxFileSize>${MAX_SIZE}</maxFileSize>
 			<maxHistory>${MAX_HISTORY}</maxHistory>
-		</triggeringPolicy>
+			<totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+		</rollingPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
@@ -49,17 +42,12 @@
 			<level>WARN</level>
 		</filter>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${LOG_FILE_ARCHIVE}-error.log</fileNamePattern>
-			<minIndex>1</minIndex>
-			<maxIndex>3</maxIndex>
-		</rollingPolicy>
-		<triggeringPolicy
 			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<fileNamePattern>${LOG_FILE_ARCHIVE}-error.log</fileNamePattern>
 			<maxFileSize>${MAX_SIZE}</maxFileSize>
 			<maxHistory>${MAX_HISTORY}</maxHistory>
-		</triggeringPolicy>
+			<totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+		</rollingPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>

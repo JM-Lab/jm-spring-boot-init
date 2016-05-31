@@ -2,7 +2,9 @@ def props = new Properties()
 file("src/main/resources/application.properties").withInputStream { 
     stream -> props.load(stream) 
 }
-project.version =  props['info.app.version']
+
+project.group = 'kr.jmlab'
+version = props['info.app.version']
 
 buildscript {
     repositories {   
@@ -20,6 +22,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'maven'
 
 jar {
 	baseName = props['info.app.name']

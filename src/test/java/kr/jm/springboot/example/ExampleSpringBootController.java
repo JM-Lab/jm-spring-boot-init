@@ -1,14 +1,14 @@
-package kr.jm.springboot.business;
+package kr.jm.springboot.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.jm.business.Business;
+import kr.jm.example.Example;
 
 @RestController
-public class BusinessSpringBootController {
+public class ExampleSpringBootController {
 
 	@Autowired
-	private Business business;
+	private Example example;
 
 }

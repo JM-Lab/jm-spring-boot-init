@@ -1,4 +1,4 @@
-package kr.jm.springboot.business;
+package kr.jm.springboot.example;
 
 import java.util.List;
 
@@ -6,25 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import kr.jm.business.Business;
+import kr.jm.example.Example;
 import kr.jm.utils.destory.DestroyInterface;
 
 @Configuration
-public class BusinessSpringBootConf {
+public class ExampleSpringBootConf {
 
 	// apply required = false
 	@Autowired(required = false)
 	private List<DestroyInterface> destroyList;
 
 	@Bean
-	public BusinessStatus businessStatus() {
-		return new BusinessStatus();
+	public ExampleStatus exampleStatus() {
+		return new ExampleStatus();
 	}
 
 	@Bean
 	@Autowired
-	public Business business(BusinessStatus businessStatus) {
-		return new Business(businessStatus, destroyList);
+	public Example example(ExampleStatus exampleStatus) {
+		return new Example(exampleStatus, destroyList);
 	}
 
 }

@@ -1,9 +1,9 @@
-package kr.jm.business;
+package kr.jm.example;
 
 import java.util.List;
 
 import kr.jm.springboot.JMSpringBootInterface;
-import kr.jm.springboot.business.BusinessStatus;
+import kr.jm.springboot.example.ExampleStatus;
 import kr.jm.utils.destory.DestroyInterface;
 import kr.jm.utils.destory.Destroyer;
 import kr.jm.utils.exception.JMExceptionManager;
@@ -11,14 +11,14 @@ import kr.jm.utils.helper.JMLog;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Business implements JMSpringBootInterface {
+public class Example implements JMSpringBootInterface {
 
-	private BusinessStatus businessStatus;
+	private ExampleStatus exampleStatus;
 	private List<DestroyInterface> destroyList;
 
-	public Business(BusinessStatus businessStatus,
+	public Example(ExampleStatus exampleStatus,
 			List<DestroyInterface> destroyList) {
-		this.businessStatus = businessStatus;
+		this.exampleStatus = exampleStatus;
 		this.destroyList = destroyList;
 	}
 

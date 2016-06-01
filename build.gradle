@@ -3,9 +3,6 @@ file("src/main/resources/application.properties").withInputStream {
     stream -> props.load(stream) 
 }
 
-project.group = 'com.github.jm-lab'
-version = props['info.app.version']
-
 buildscript {
     repositories {   
     	mavenLocal()
@@ -24,9 +21,9 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
 
-jar {
-	baseName = props['info.app.name']
-}
+archivesBaseName = props['info.app.name']
+project.group = 'com.github.jm-lab'
+version = props['info.app.version']
 
 repositories {
 	mavenLocal()

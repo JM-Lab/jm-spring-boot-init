@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import kr.jm.example.Example;
+import kr.jm.springboot.AbstractJMSpringBootStatus;
 import kr.jm.utils.destory.DestroyInterface;
 
 @Configuration
@@ -17,14 +18,9 @@ public class ExampleSpringBootConf {
 	private List<DestroyInterface> destroyList;
 
 	@Bean
-	public ExampleStatus exampleStatus() {
-		return new ExampleStatus();
-	}
-
-	@Bean
 	@Autowired
-	public Example example(ExampleStatus exampleStatus) {
-		return new Example(exampleStatus, destroyList);
+	public Example example(AbstractJMSpringBootStatus backendStatus) {
+		return new Example(backendStatus, destroyList);
 	}
 
 }

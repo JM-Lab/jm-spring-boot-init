@@ -1,6 +1,6 @@
 package kr.jm.springboot;
 
-import java.util.Arrays;
+import static kr.jm.utils.helper.JMConsumer.getSOPL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import kr.jm.utils.helper.JMResources;
+import kr.jm.utils.helper.JMStream;
 
 @SpringBootApplication
 // same as @Configuration @EnableAutoConfiguration @ComponentScan
@@ -26,27 +27,26 @@ public class JMSpringBootApplication {
 
 	public static void main(String[] args) {
 
-		ApplicationContext ctx =
+		ApplicationContext applicationContext =
 				SpringApplication.run(JMSpringBootApplication.class, args);
 
 		System.out.println("Let's inspect the beans provided by Spring Boot:");
 
-		String[] beanNames = ctx.getBeanDefinitionNames();
-		Arrays.sort(beanNames);
-		for (String beanName : beanNames)
-			System.out.println(beanName);
+		JMStream.buildStream(applicationContext.getBeanDefinitionNames())
+				.sorted().forEach(getSOPL());
 
 		// service start
-		JMSpringBootInterface jmService =
-				ctx.getBean("jmService", JMSpringBootInterface.class);
-		jmService.start();
+		applicationContext
+				.getBean("jmSpringBootService", JMSpringBootInterface.class)
+				.start();
 
 	}
 
 	@Bean(destroyMethod = "stop")
 	@Autowired
-	public JMSpringBootInterface jmService(JMSpringBootInterface jmService) {
-		return jmService;
+	public JMSpringBootInterface
+			jmSpringBootService(JMSpringBootInterface jmSpringBootService) {
+		return jmSpringBootService;
 	}
 
 }

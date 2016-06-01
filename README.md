@@ -1,7 +1,7 @@
 jm-spring-boot-init
 ===================
 
-eclipse spring boot template for me
+Spring Boot Template
 
 ## Prerequisites:
 * Java 8 or later

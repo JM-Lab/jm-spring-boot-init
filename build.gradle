@@ -3,7 +3,7 @@ file("src/main/resources/application.properties").withInputStream {
     stream -> props.load(stream) 
 }
 
-project.group = 'kr.jmlab'
+project.group = 'com.github.jm-lab'
 version = props['info.app.version']
 
 buildscript {

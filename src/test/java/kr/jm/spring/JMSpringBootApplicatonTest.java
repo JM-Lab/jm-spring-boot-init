@@ -42,7 +42,8 @@ public class JMSpringBootApplicatonTest {
 		ResultActions resultActions = mockMvc.perform(requestBuilder)
 				.andExpect(MockMvcResultMatchers.status().isOk());
 		assertTrue(resultActions.andReturn().getResponse().getContentAsString()
-				.contains("jm-spring-boot-init"));
+				.contains(webApplicationContext.getEnvironment()
+						.getProperty("info.app.name")));
 	}
 
 	@Test

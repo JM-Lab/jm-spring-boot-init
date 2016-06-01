@@ -1,4 +1,4 @@
-package kr.jm.spring;
+package kr.jm.springboot;
 
 import static org.junit.Assert.assertTrue;
 

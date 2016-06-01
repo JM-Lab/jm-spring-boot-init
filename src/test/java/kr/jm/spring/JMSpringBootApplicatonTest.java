@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import kr.jm.springboot.JMSpringBootApplication;
-import kr.jm.springboot.JMSpringBootInterface;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = JMSpringBootApplication.class)
@@ -28,14 +27,10 @@ public class JMSpringBootApplicatonTest {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
-	@Autowired
-	private JMSpringBootInterface jmService;
-
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup() throws Exception {
-		this.jmService.start();
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
 				.build();
 	}
@@ -67,8 +62,7 @@ public class JMSpringBootApplicatonTest {
 				.equals("application/json;charset=UTF-8"));
 		String contentAsString2 =
 				resultActions.andReturn().getResponse().getContentAsString();
-		assertTrue(contentAsString2.contains("Hello World"));
-		assertTrue(contentAsString2.contains("RuntimeException"));
+		assertTrue(contentAsString2.contains("[]"));
 	}
 
 }

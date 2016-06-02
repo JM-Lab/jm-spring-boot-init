@@ -19,9 +19,9 @@ public class JMSpringBootController {
 	@Autowired
 	private AbstractJMSpringBootStatus jmServiceSpringBootStatus;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/ops", method = RequestMethod.GET)
 	public RedirectView mainRedirect() {
-		return new RedirectView("/Dashboard.html");
+		return new RedirectView("/ops/Dashboard.html");
 	}
 
 	@RequestMapping(value = "/ops/serviceInfo", method = RequestMethod.GET)

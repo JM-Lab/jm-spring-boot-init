@@ -14,48 +14,49 @@ import kr.jm.utils.exception.ErrorMessageHistory;
 import kr.jm.utils.exception.JMExceptionManager;
 
 @RestController
+@RequestMapping("/ops")
 public class JMSpringBootController {
 
 	@Autowired
 	private AbstractJMSpringBootStatus jmServiceSpringBootStatus;
 
-	@RequestMapping(value = "/ops", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public RedirectView mainRedirect() {
-		return new RedirectView("/ops/Dashboard.html");
+		return new RedirectView("/Dashboard.html");
 	}
 
-	@RequestMapping(value = "/ops/serviceInfo", method = RequestMethod.GET)
+	@RequestMapping(value = "serviceInfo", method = RequestMethod.GET)
 	public @ResponseBody AbstractJMSpringBootStatus serviceInfo() {
 		return jmServiceSpringBootStatus;
 	}
 
-	@RequestMapping(value = "/ops/jvm", method = RequestMethod.GET)
+	@RequestMapping(value = "jvm", method = RequestMethod.GET)
 	public RedirectView monitoringJvmRedirect() {
 		return new RedirectView("/ops/JVM.html");
 	}
 
-	@RequestMapping(value = "/ops/error/list", method = RequestMethod.GET)
+	@RequestMapping(value = "error/list", method = RequestMethod.GET)
 	public @ResponseBody List<ErrorMessageHistory> getErrorList() {
 		return JMCollections
 				.getReversed(JMExceptionManager.getErrorMessageHistoryList());
 	}
 
-	@RequestMapping(value = "/ops/error/list", method = RequestMethod.DELETE)
+	@RequestMapping(value = "error/list", method = RequestMethod.DELETE)
 	public @ResponseBody void removeErrorList() {
 		JMExceptionManager.removeErrorMessgeHistoryList();
 	}
 
-	@RequestMapping(value = "/ops/error/count/reset", method = RequestMethod.POST)
+	@RequestMapping(value = "error/count/reset", method = RequestMethod.POST)
 	public @ResponseBody void resetErrorCount() {
 		JMExceptionManager.resetErrorCount();
 	}
 
-	@RequestMapping(value = "/ops/error/count", method = RequestMethod.GET)
+	@RequestMapping(value = "error/count", method = RequestMethod.GET)
 	public @ResponseBody long getErrorCount() {
 		return JMExceptionManager.getErrorCount();
 	}
 
-	@RequestMapping(value = "/ops/error", method = RequestMethod.GET)
+	@RequestMapping(value = "error", method = RequestMethod.GET)
 	public RedirectView monitoringErrorView() {
 		return new RedirectView("/ops/ErrorMessageView.html");
 	}

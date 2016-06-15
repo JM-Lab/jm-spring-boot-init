@@ -22,7 +22,7 @@ public class JMSpringBootController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public RedirectView mainRedirect() {
-		return new RedirectView("/Dashboard.html");
+		return new RedirectView("/ops/Dashboard.html");
 	}
 
 	@RequestMapping(value = "serviceInfo", method = RequestMethod.GET)

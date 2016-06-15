@@ -12,8 +12,7 @@ import kr.jm.utils.helper.JMLog;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Example extends JMSpringBootApplication
-		implements JMSpringBootInterface {
+public class Example implements JMSpringBootInterface {
 
 	private AbstractJMSpringBootStatus backendStatus;
 	private List<DestroyInterface> destroyList;

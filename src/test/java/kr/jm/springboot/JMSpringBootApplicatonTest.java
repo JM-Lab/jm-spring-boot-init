@@ -17,8 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import kr.jm.springboot.JMSpringBootApplication;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = JMSpringBootApplication.class)
 @WebAppConfiguration
@@ -51,10 +49,11 @@ public class JMSpringBootApplicatonTest {
 		MockHttpServletRequestBuilder requestBuilder =
 				MockMvcRequestBuilders.get("/ops/error");
 		ResultActions resultActions = mockMvc.perform(requestBuilder)
-				.andExpect(MockMvcResultMatchers.status().is3xxRedirection());
+				.andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
 		String contentAsString =
-				resultActions.andReturn().getResponse().getRedirectedUrl();
-		assertTrue(contentAsString.equals("/ops/ErrorMessageView.html"));
+				resultActions.andReturn().getModelAndView().toString();
+		System.out.println(contentAsString);
+		assertTrue(contentAsString.contains("/ops/ErrorMessageView.html"));
 
 		requestBuilder = MockMvcRequestBuilders.get("/ops/error/list");
 		resultActions = mockMvc.perform(requestBuilder)

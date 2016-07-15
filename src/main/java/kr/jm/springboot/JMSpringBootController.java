@@ -3,11 +3,12 @@ package kr.jm.springboot;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.jm.utils.datastructure.JMCollections;
 import kr.jm.utils.exception.ErrorMessageHistory;
@@ -21,8 +22,8 @@ public class JMSpringBootController {
 	private AbstractJMSpringBootStatus jmServiceSpringBootStatus;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public RedirectView mainRedirect() {
-		return new RedirectView("/ops/Dashboard.html");
+	public ModelAndView mainRedirect(ModelMap model) {
+		return new ModelAndView("/ops/Dashboard.html", model);
 	}
 
 	@RequestMapping(value = "serviceInfo", method = RequestMethod.GET)
@@ -31,8 +32,8 @@ public class JMSpringBootController {
 	}
 
 	@RequestMapping(value = "jvm", method = RequestMethod.GET)
-	public RedirectView monitoringJvmRedirect() {
-		return new RedirectView("/ops/JVM.html");
+	public ModelAndView monitoringJvmRedirect(ModelMap model) {
+		return new ModelAndView("/ops/JVM.html", model);
 	}
 
 	@RequestMapping(value = "error/list", method = RequestMethod.GET)
@@ -57,8 +58,8 @@ public class JMSpringBootController {
 	}
 
 	@RequestMapping(value = "error", method = RequestMethod.GET)
-	public RedirectView monitoringErrorView() {
-		return new RedirectView("/ops/ErrorMessageView.html");
+	public ModelAndView monitoringErrorView(ModelMap model) {
+		return new ModelAndView("/ops/ErrorMessageView.html", model);
 	}
 
 }

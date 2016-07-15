@@ -9,6 +9,7 @@ import kr.jm.utils.destory.DestroyInterface;
 import kr.jm.utils.destory.Destroyer;
 import kr.jm.utils.exception.JMExceptionManager;
 import kr.jm.utils.helper.JMLog;
+import kr.jm.utils.helper.JMOptional;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -42,7 +43,7 @@ public class Example implements JMSpringBootInterface {
 	@Override
 	public void stop() {
 		JMLog.infoBeforeStart(log, "Start Graceful Shutdown");
-		Destroyer.cleanUp(destroyList);
+		JMOptional.getOptional(destroyList).ifPresent(Destroyer::cleanUp);
 		JMLog.infoBeforeStart(log, "Shutdown Completely");
 	}
 

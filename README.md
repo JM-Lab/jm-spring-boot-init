@@ -4,7 +4,7 @@ jm-spring-boot-init
 Spring Boot Template
 
 ## version
-1.3.4
+1.3.6
 
 ## Prerequisites:
 * Java 8 or later
@@ -14,14 +14,14 @@ Spring Boot Template
 
     git clone https://github.com/JM-Lab/jm-spring-boot-init.git
     cd jm-spring-boot-init
-    git checkout -b java8-1.3.4 origin/java8-1.3.4
+    git checkout -b java8-1.3.6 origin/java8-1.3.6
     gradle install
     
 ## Usage
 Set up build.gradle :
 
     (...)
-    compile ('com.github.jm-lab:jm-spring-boot-init:1.3.4')
+    compile ('com.github.jm-lab:jm-spring-boot-init:1.3.6')
     (...)
 
 Set up pom.xml :
@@ -30,6 +30,6 @@ Set up pom.xml :
     <dependency>
 			<groupId>com.github.jm-lab</groupId>
 			<artifactId>jm-spring-boot-init</artifactId>
-			<version>1.3.4</version>
+			<version>1.3.6</version>
 	</dependency>
     (...)

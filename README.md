@@ -14,7 +14,7 @@ Spring Boot Template
 
     git clone https://github.com/JM-Lab/jm-spring-boot-init.git
     cd jm-spring-boot-init
-    git checkout -b java8-1.3.6 origin/java8-1.3.6
+    git checkout -b 1.3.6 origin/1.3.6
     gradle install
     
 ## Usage

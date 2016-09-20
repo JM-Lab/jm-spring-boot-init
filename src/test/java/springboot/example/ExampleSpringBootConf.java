@@ -1,4 +1,4 @@
-package kr.jm.springboot.example;
+package springboot.example;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import kr.jm.example.Example;
-import kr.jm.springboot.AbstractJMSpringBootStatus;
 import kr.jm.utils.destory.DestroyInterface;
+import springboot.AbstractJMSpringBootStatus;
 
 @Configuration
 public class ExampleSpringBootConf {

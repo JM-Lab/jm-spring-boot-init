@@ -2,15 +2,15 @@ package kr.jm.example;
 
 import java.util.List;
 
-import kr.jm.springboot.AbstractJMSpringBootStatus;
-import kr.jm.springboot.JMSpringBootApplication;
-import kr.jm.springboot.JMSpringBootInterface;
 import kr.jm.utils.destory.DestroyInterface;
 import kr.jm.utils.destory.Destroyer;
 import kr.jm.utils.exception.JMExceptionManager;
 import kr.jm.utils.helper.JMLog;
 import kr.jm.utils.helper.JMOptional;
 import lombok.extern.slf4j.Slf4j;
+import springboot.AbstractJMSpringBootStatus;
+import springboot.JMSpringBootApplication;
+import springboot.JMSpringBootInterface;
 
 @Slf4j
 public class Example implements JMSpringBootInterface {
@@ -30,7 +30,7 @@ public class Example implements JMSpringBootInterface {
 
 	@Override
 	public void start() {
-		JMLog.infoBeforeStart(log, "start");
+		JMLog.info(log, "start");
 		try {
 			System.out.println(backendStatus.getInfo() + " Start !!!");
 			throw new RuntimeException("[Sample Error] Hello World !!!");
@@ -42,9 +42,9 @@ public class Example implements JMSpringBootInterface {
 
 	@Override
 	public void stop() {
-		JMLog.infoBeforeStart(log, "Start Graceful Shutdown");
+		JMLog.info(log, "Start Graceful Shutdown");
 		JMOptional.getOptional(destroyList).ifPresent(Destroyer::cleanUp);
-		JMLog.infoBeforeStart(log, "Shutdown Completely");
+		JMLog.info(log, "Shutdown Completely");
 	}
 
 }

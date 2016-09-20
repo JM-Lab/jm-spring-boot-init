@@ -12,25 +12,25 @@ buildscript {
     }
     repositories sharedRepositories
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 apply plugin: 'maven'
 
-archivesBaseName = props['info.app.name']
-version = props['info.app.version']
-group = props['info.app.group']
+archivesBaseName = props['info.name']
+version = props['info.version']
+group = props['info.group']
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+	gradleVersion = '3.2'
 }
 
 uploadArchives {
@@ -38,6 +38,22 @@ uploadArchives {
        flatDir {
            dirs 'deploy'
        }
+    }
+}
+
+// 아래부분은 지금 프로젝트를 라이브러리로 빌드시에만 필요함 사용하는 프로젝트에서는 필요 없음
+bootRepackage {
+    mainClass = 'springboot.JMSpringBootApplication'
+    classifier = 'exec'
+}
+
+springBoot {
+	requiresUnpack = ['org.springframework.boot:spring-boot-starter-web','org.projectlombok:lombok','org.jolokia:jolokia-core','kr.jmlab:jmlab-utils-java8']
+}
+
+jar {
+    from(fileTree("public")) {  
+        into "META-INF/resources" 
     }
 }
 
@@ -52,28 +68,14 @@ dependencies {
 //	}
 //	compile 'org.springframework.boot:spring-boot-starter-jetty'
 
-	compile 'kr.jmlab:jmlab-utils-java8:0.1.82'
-    compile 'org.projectlombok:lombok:1.16.8'
-    compile 'org.springframework.boot:spring-boot-starter-web:1.3.6.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-actuator:1.3.6.RELEASE'
-    compile 'org.jolokia:jolokia-core:1.3.3'
-    testCompile 'org.springframework.boot:spring-boot-starter-test:1.3.6.RELEASE'
-}
-
-// 아래부분은 지금 프로젝트를 라이브러리로 빌드시에만 필요함 사용하는 프로젝트에서는 필요 없음
-bootRepackage {
-    mainClass = 'kr.jm.springboot.JMSpringBootApplication'
-    classifier = 'exec'
-}
-
-springBoot {
-	requiresUnpack = ['org.springframework.boot:spring-boot-starter-web','org.projectlombok:lombok','org.jolokia:jolokia-core','kr.jmlab:jmlab-utils-java8']
-}
-
-jar {
-    from(fileTree("public")) {  
-        into "META-INF/resources" 
-    }
+	compile 'kr.jmlab:jmlab-utils-java8:0.1.84'
+    compile 'org.projectlombok:lombok:1.16.10'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-actuator:1.4.3.RELEASE'
+    compile 'org.jolokia:jolokia-core:1.3.5'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.4.3.RELEASE'
+    // spring boot admin client
+ //   compile 'de.codecentric:spring-boot-admin-starter-client:1.4.5'
 }
 
 task createPom {

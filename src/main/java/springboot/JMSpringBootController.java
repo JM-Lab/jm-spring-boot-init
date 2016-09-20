@@ -1,4 +1,4 @@
-package kr.jm.springboot;
+package springboot;
 
 import java.util.List;
 

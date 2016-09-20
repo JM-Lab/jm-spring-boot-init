@@ -1,9 +1,9 @@
-package kr.jm.springboot.example;
+package springboot.example;
 
 import org.springframework.boot.actuate.health.Health.Builder;
 import org.springframework.stereotype.Component;
 
-import kr.jm.springboot.AbstractJMSpringBootStatus;
+import springboot.AbstractJMSpringBootStatus;
 
 @Component
 public class ExampleStatus extends AbstractJMSpringBootStatus {

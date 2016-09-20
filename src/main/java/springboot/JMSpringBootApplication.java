@@ -1,4 +1,4 @@
-package kr.jm.springboot;
+package springboot;
 
 import static kr.jm.utils.helper.JMConsumer.getSOPL;
 

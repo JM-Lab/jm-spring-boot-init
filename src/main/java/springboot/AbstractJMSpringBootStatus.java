@@ -1,4 +1,4 @@
-package kr.jm.springboot;
+package springboot;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.Health.Builder;
@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 public abstract class AbstractJMSpringBootStatus {
 
-	@Value("${info.app.name}")
+	@Value("${info.name}")
 	private String info;
 	private String hostname = OS.getHostname();
 	private String ip = OS.getIp();

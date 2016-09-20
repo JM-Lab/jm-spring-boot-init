@@ -1,4 +1,4 @@
-package kr.jm.springboot;
+package springboot;
 
 public interface JMSpringBootInterface {
 	public void start();

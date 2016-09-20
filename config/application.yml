@@ -1,5 +1,9 @@
 #external config
 #default
+# Spring boot admin server config start
+spring.application.name: ${info.name}
+#admin client
+#spring.boot.admin.url: http://localhost:8080
 
 --- #profile option1
 spring:

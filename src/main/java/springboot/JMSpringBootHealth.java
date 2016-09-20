@@ -1,4 +1,4 @@
-package kr.jm.springboot;
+package springboot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;

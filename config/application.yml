@@ -3,7 +3,8 @@
 # Spring boot admin server config start
 spring.application.name: ${info.name}
 #admin client
-#spring.boot.admin.url: http://localhost:8080
+spring.boot.admin.url: http://localhost:8089
+management.security.enabled: false
 
 --- #profile option1
 spring:

@@ -12,7 +12,7 @@ buildscript {
     }
     repositories sharedRepositories
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
     }
 }
 
@@ -61,21 +61,21 @@ repositories sharedRepositories
 
 dependencies {
 //  실제 적용시에는 아래 의존성만 사용하면 됨
-//	compile ('com.github.jm-lab:jm-spring-boot-init:1.3.4')
+//	compile 'com.github.jm-lab:jm-spring-boot-init:1.5.2'
 //  jetty 를 사용하려면 아래 주석 해제
 //	{
 //		exclude module: 'spring-boot-starter-tomcat'
 //	}
 //	compile 'org.springframework.boot:spring-boot-starter-jetty'
 
-	compile 'kr.jmlab:jmlab-utils-java8:0.1.84'
-    compile 'org.projectlombok:lombok:1.16.10'
-    compile 'org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-actuator:1.4.3.RELEASE'
-    compile 'org.jolokia:jolokia-core:1.3.5'
-    testCompile 'org.springframework.boot:spring-boot-starter-test:1.4.3.RELEASE'
-    // spring boot admin client
- //   compile 'de.codecentric:spring-boot-admin-starter-client:1.4.5'
+	compile 'kr.jmlab:jmlab-utils-java8:0.1.86'
+    compile 'org.projectlombok:lombok:1.16.16'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-actuator:1.5.2.RELEASE'
+    compile 'org.jolokia:jolokia-core:1.3.6'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.2.RELEASE'
+// spring boot admin client
+//  compile 'de.codecentric:spring-boot-admin-starter-client:1.5.0'
 }
 
 task createPom {

@@ -1,11 +1,11 @@
 def props = new Properties()
-file("src/main/resources/application.properties").withInputStream { 
-    stream -> props.load(stream) 
+file("src/main/resources/application.properties").withInputStream {
+    stream -> props.load(stream)
 }
 
 buildscript {
-    ext.sharedRepositories = {   
-    	mavenLocal()
+    ext.sharedRepositories = {
+        mavenLocal()
         jcenter()
         maven { url "http://repo.spring.io/snapshot" }
         maven { url "http://repo.spring.io/milestone" }
@@ -30,14 +30,14 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '3.2'
+    gradleVersion = '3.2'
 }
 
 uploadArchives {
     repositories {
-       flatDir {
-           dirs 'deploy'
-       }
+        flatDir {
+            dirs 'deploy'
+        }
     }
 }
 
@@ -48,12 +48,12 @@ bootRepackage {
 }
 
 springBoot {
-	requiresUnpack = ['org.springframework.boot:spring-boot-starter-web','org.projectlombok:lombok','org.jolokia:jolokia-core','kr.jmlab:jmlab-utils-java8']
+    requiresUnpack = ['org.springframework.boot:spring-boot-starter-web', 'org.projectlombok:lombok', 'org.jolokia:jolokia-core', 'kr.jmlab:jmlab-utils-java8']
 }
 
 jar {
-    from(fileTree("public")) {  
-        into "META-INF/resources" 
+    from(fileTree("public")) {
+        into "META-INF/resources"
     }
 }
 
@@ -68,7 +68,7 @@ dependencies {
 //	}
 //	compile 'org.springframework.boot:spring-boot-starter-jetty'
 
-	compile 'kr.jmlab:jmlab-utils-java8:0.1.86'
+    compile 'kr.jmlab:jmlab-utils-java8:0.1.86'
     compile 'org.projectlombok:lombok:1.16.16'
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-actuator:1.5.2.RELEASE'
@@ -79,5 +79,5 @@ dependencies {
 }
 
 task createPom {
-    pom{}.writeTo("pom.xml")
+    pom {}.writeTo("pom.xml")
 }

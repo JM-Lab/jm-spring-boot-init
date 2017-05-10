@@ -1,11 +1,8 @@
 package springboot;
 
-import static kr.jm.utils.helper.JMConsumer.getSOPL;
-import static kr.jm.utils.helper.JMOptional.getOptional;
-
-import java.util.Optional;
-import java.util.Properties;
-
+import kr.jm.utils.enums.OS;
+import kr.jm.utils.helper.JMStream;
+import kr.jm.utils.helper.JMString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,56 +10,63 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import kr.jm.utils.enums.OS;
-import kr.jm.utils.helper.JMResources;
-import kr.jm.utils.helper.JMStream;
-import kr.jm.utils.helper.JMString;
+import java.util.Properties;
+
+import static kr.jm.utils.helper.JMConsumer.getSOPL;
+import static kr.jm.utils.helper.JMOptional.getOptional;
+import static kr.jm.utils.helper.JMResources.getProperties;
+import static kr.jm.utils.helper.JMResources.setSystemPropertyIfIsNull;
 
 @SpringBootApplication
 // same as @Configuration @EnableAutoConfiguration @ComponentScan
 @EnableScheduling
 public class JMSpringBootApplication {
 
-	static {
-		Properties applicationProperties =
-				JMResources.getProperties("application.properties");
-		String loggingPath = "logging.path";
-		JMResources.setSystemPropertyIfIsNull(loggingPath,
-				getOptional(applicationProperties, loggingPath).orElse("log"));
-		JMResources.setSystemPropertyIfIsNull("logging.level",
-				getOptional(applicationProperties, "logging.level.root")
-						.orElse("INFO"));
-		JMResources.setSystemPropertyIfIsNull("info.monitoring",
-				"http://" + OS.getIp()
-						+ Optional
-								.ofNullable(applicationProperties
-										.getProperty("server.port"))
-								.map(o -> ":" + o).orElse(JMString.EMPTY)
-						+ "/ops/jvm");
-	}
+    static {
+        Properties applicationProperties = getApplicationProperties();
+        String loggingPath = "logging.path";
+        setSystemPropertyIfIsNull(loggingPath,
+                getOptional(applicationProperties, loggingPath).orElse("log"));
+        setSystemPropertyIfIsNull("logging.level",
+                getOptional(applicationProperties, "logging.level.root")
+                        .orElse("INFO"));
+        setSystemPropertyIfIsNull("info.monitoring", "http://" + OS.getIp()
+                + getOptional(applicationProperties, "server.port")
+                .map(o -> ":" + o).orElse(JMString.EMPTY) + "/ops/jvm");
+    }
 
-	public static void main(String[] args) {
+    private static Properties getApplicationProperties() {
+        String APPLICATION_PROPERTIES = "application.properties";
+        try {
+            return getProperties("BOOT-INF/classes/" + APPLICATION_PROPERTIES);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getProperties(APPLICATION_PROPERTIES);
+        }
+    }
 
-		ApplicationContext applicationContext =
-				SpringApplication.run(JMSpringBootApplication.class, args);
+    public static void main(String[] args) {
 
-		System.out.println("Let's inspect the beans provided by Spring Boot:");
+        ApplicationContext applicationContext =
+                SpringApplication.run(JMSpringBootApplication.class, args);
 
-		JMStream.buildStream(applicationContext.getBeanDefinitionNames())
-				.sorted().forEach(getSOPL());
+        System.out.println("Let's inspect the beans provided by Spring Boot:");
 
-		// service start
-		applicationContext
-				.getBean("jmSpringBootService", JMSpringBootInterface.class)
-				.start();
+        JMStream.buildStream(applicationContext.getBeanDefinitionNames())
+                .sorted().forEach(getSOPL());
 
-	}
+        // service start
+        applicationContext
+                .getBean("jmSpringBootService", JMSpringBootInterface.class)
+                .start();
 
-	@Bean(destroyMethod = "stop")
-	@Autowired
-	public JMSpringBootInterface
-			jmSpringBootService(JMSpringBootInterface jmSpringBootService) {
-		return jmSpringBootService;
-	}
+    }
+
+    @Bean(destroyMethod = "stop")
+    @Autowired
+    public JMSpringBootInterface
+    jmSpringBootService(JMSpringBootInterface jmSpringBootService) {
+        return jmSpringBootService;
+    }
 
 }
